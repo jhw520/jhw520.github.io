@@ -16,7 +16,6 @@ typedef struct student
 }Stu;
 
 
-
 int main()
 {
 	Stu *head, *q, *p;
@@ -30,6 +29,31 @@ int main()
 		p->next = head->next;
 		head->next = p;
 	}
+/*
+	p = head->next;	
+   while(q)
+	{
+		printf("%d\n",q->score);
+		q = q->next;
+	}
+*/	
+// nixu
+	Stu *s, *t, *k;
+	s = head->next;
+	t = s->next;
+	s->next = NULL;
+	k = t->next;
+
+	while(k != NULL)
+	{
+		printf("1");
+		t->next = s;
+		s = t;
+		t = k;
+		k = k->next;
+	}
+	t->next = s;
+	head->next = t;
 	q = head->next; 
 	
 	while(q)
@@ -37,5 +61,6 @@ int main()
 		printf("%d\n",q->score);
 		q = q->next;
 	}
-    return 0;
+
+	return 0;
 }
